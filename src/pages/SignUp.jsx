@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
-import { key } from "../index";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./SignUp.scss";
+import { signupHandler } from "../actions/action";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
@@ -14,25 +16,15 @@ const SignUp = () => {
     if (password === confirmPassword) {
       if (password.length > 7) {
         try {
-          const response = await fetch(
-            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
-              key,
-            {
-              method: "POST",
-              body: JSON.stringify({
-                email: email,
-                password: password,
-                returnSecureToken: true,
-              }),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
+          const response = await signupHandler(email, password);
+          if (response.error) {
+            throw response.error;
+          } else {
+          }
+          alert(
+            `You have successfully registered with email "${response.email}" `
           );
-          const data = await response.json();
-          if (data.error) {
-            throw data.error;
-          } else alert("You have registered with email :- " + data.email);
+          navigate("/login", { replace: true });
           emailRef.current.value = "";
           passwordRef.current.value = "";
           confirmPasswordRef.current.value = "";
@@ -111,6 +103,9 @@ const SignUp = () => {
           className="btn btn-light"
           type="button"
           style={{ backgroundColor: "rgba(0, 255, 255, 0.074)" }}
+          onClick={() => {
+            navigate("/login", { replace: true });
+          }}
         >
           Have an account? LogIn
         </button>
