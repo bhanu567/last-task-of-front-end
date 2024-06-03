@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { key } from "../index";
 import "./SignUp.scss";
 
 const SignUp = () => {
@@ -14,7 +15,8 @@ const SignUp = () => {
       if (password.length > 7) {
         try {
           const response = await fetch(
-            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyATBLNXUUyGsJ8yS54FzsFZayV2iOnEJhQ",
+            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
+              key,
             {
               method: "POST",
               body: JSON.stringify({
@@ -31,8 +33,6 @@ const SignUp = () => {
           if (data.error) {
             throw data.error;
           } else alert("You have registered with email :- " + data.email);
-          console.log(data);
-          console.log(data.email);
           emailRef.current.value = "";
           passwordRef.current.value = "";
           confirmPasswordRef.current.value = "";
