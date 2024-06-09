@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SignUp.scss";
 import { signupHandler } from "../actions/action";
 

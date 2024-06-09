@@ -1,4 +1,4 @@
-export const key =
+export const key = "AIzaSyATBLNXUUyGsJ8yS54FzsFZayV2iOnEJhQ";
 
 export const signupHandler = async (email, password) => {
   try {

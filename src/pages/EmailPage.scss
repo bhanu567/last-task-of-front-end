@@ -1,0 +1,89 @@
+.outer {
+  display: flex;
+  flex-direction: column;
+  margin: 10vh 30vw;
+  padding: 10px;
+  hr {
+    width: 100%;
+    border: 1px solid black;
+    margin: 5px 0px 15px 0px;
+  }
+  .to {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1px 20px 1px 0px;
+    span {
+      font-size: 300;
+      color: gray;
+    }
+    input {
+      border: none;
+      padding: 2px;
+      width: 80%;
+      outline: none;
+    }
+  }
+  .tmail {
+    padding: 5px 0px;
+  }
+  .tarea {
+    #txt {
+      min-height: 250px;
+      border: none;
+      width: 100%;
+      outline: none;
+    }
+    .rdw-editor-wrapper {
+      box-sizing: content-box;
+      display: flex;
+      flex-direction: column-reverse;
+
+      .rdw-editor-toolbar {
+        width: fit-content;
+        position: relative;
+        top: 65px;
+        left: 95px;
+        border: none;
+        background-color: transparent;
+        :hover {
+          box-shadow: none;
+        }
+        .rdw-option-wrapper {
+          border: 0px;
+          img {
+            height: 15px;
+          }
+        }
+        .rdw-dropdown-wrapper {
+          border: 0px;
+        }
+      }
+      .rdw-editor-main {
+        min-height: 250px;
+        .public-DraftStyleDefault-block {
+          margin: 0px;
+        }
+      }
+    }
+  }
+  .but {
+    display: flex;
+    justify-content: space-between;
+    .btn {
+      padding: 7px 30px;
+      font-size: small;
+      color: white;
+      background-color: rgb(96, 96, 237);
+      border-radius: 5px;
+    }
+    .imgbtn {
+      border: none;
+      background-color: transparent;
+      img {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}

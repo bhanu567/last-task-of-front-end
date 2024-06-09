@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logInHandler } from "../actions/action";
+import eyeImage from "../image/eye.png";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ const LogIn = () => {
               ref={passwordRef}
             ></input>
             <span style={{ paddingTop: "5px", paddingRight: "5px" }}>
-              <img src="./eye.png" alt="passwordIcon" width="30" height="30" />
+              <img src={eyeImage} alt="passwordIcon" width="30" height="30" />
             </span>
           </div>
           <div className="d-grid border-0 mt-5">
