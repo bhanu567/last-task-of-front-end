@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./SignUp.scss";
 import { signupHandler } from "../actions/action";
 
-const SignUp = () => {h
+const SignUp = () => {
   const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();

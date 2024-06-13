@@ -1,0 +1,46 @@
+.nav-bar {
+  width: 100%;
+  top: 0px;
+  position: sticky;
+  padding: 15px 60px;
+  display: flex;
+  flex-direction: row;
+  background-image: linear-gradient(
+    to right,
+    rgb(82, 94, 233),
+    rgb(146, 88, 246)
+  );
+
+  align-items: center;
+  z-index: 1;
+  .nav-img {
+    width: 200px;
+    filter: brightness(0) invert(1);
+    margin-right: 50px;
+  }
+  .input-dropdown {
+    .input-box {
+      width: 650px;
+      padding: 5px 10px;
+      outline: none;
+      border-radius: 5px 0px 0px 5px;
+      background-image: url("../image/down-arrow.png");
+      background-position: 615px 4px;
+      background-repeat: no-repeat;
+      background-size: 30px 30px;
+    }
+    .search-button {
+      border: none;
+      margin: 0;
+      background-color: rgba(45, 42, 245, 0.447);
+      padding: 6px 40px;
+      border-radius: 0px 5px 5px 0px;
+    }
+  }
+}
+
+.content-area {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}

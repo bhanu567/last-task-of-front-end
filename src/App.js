@@ -4,6 +4,7 @@ import LogIn from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import EmailPage from "./pages/EmailPage";
 import Rough from "./pages/Rough";
+import MailInboxPage from "./pages/MailInboxPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
   { path: "/signup", element: <SignUp /> },
   { path: "/email", element: <EmailPage /> },
   { path: "/rough", element: <Rough /> },
+  { path: "/inbox", element: <MailInboxPage /> },
 ]);
 
 function App() {

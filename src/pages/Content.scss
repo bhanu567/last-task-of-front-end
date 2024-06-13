@@ -1,0 +1,46 @@
+.heading {
+  width: 100%;
+  position: sticky;
+  padding: 9px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    input {
+      height: 18px;
+      width: 18px;
+      margin-right: 5px;
+      cursor: pointer;
+      &:checked {
+        accent-color: transparent;
+        outline: 2px solid black;
+      }
+    }
+    button {
+      margin: 0px;
+      padding: 0px;
+      background-color: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      img {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+  .middle {
+    button {
+      margin-right: 40px;
+      align-items: center;
+      img {
+        height: 15px;
+        width: 15px;
+        margin-right: 6px;
+      }
+    }
+  }
+}
