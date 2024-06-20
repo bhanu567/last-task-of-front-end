@@ -1,14 +1,15 @@
 import emailjs from "@emailjs/browser";
 
-const savingToFirebase = async (email, message) => {
+export const savingToFirebase = async (emails, unread, totalEmails) => {
   try {
     await fetch(
       "https://mail-box-client-61486-default-rtdb.asia-southeast1.firebasedatabase.app/email.json",
       {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify({
-          email: email,
-          message: message,
+          emails: emails,
+          unread: unread,
+          totalEmails: totalEmails,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -33,23 +34,13 @@ export const sendEmailRestAPI = async (email, message) => {
     },
   };
   try {
-    const response = await fetch(
-      "https://api.emailjs.com/api/v1.0/email/send",
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    if (response.ok) {
-      try {
-        await savingToFirebase(email, message);
-      } catch (error) {
-        throw error;
-      }
-    }
+    await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error) {
     throw error;
   }
@@ -67,13 +58,7 @@ export const sendEmailReact = async (email, message) => {
       publicKey: "2TIfKiBGotKql32GV",
     })
     .then(
-      async () => {
-        try {
-          await savingToFirebase(email, message);
-        } catch (error) {
-          throw error;
-        }
-      },
+      () => {},
       (error) => {
         throw error;
       }

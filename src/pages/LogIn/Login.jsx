@@ -1,35 +1,52 @@
 import React, { useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { logInHandler } from "../actions/action";
-import eyeImage from "../image/eye.png";
+// import { logInHandler } from "../../store/functions/login_signup";
+import eyeImage from "../../image/eye.png";
+import useLogIn from "../../store/hooks/logIn";
 
 const LogIn = () => {
   const navigate = useNavigate();
+
+  // const loginHandler = async (e) => {
+  //   e.preventDefault();
+  //   const email = emailRef.current.value;
+  //   const password = passwordRef.current.value;
+  //   if (password.length > 7) {
+  //     try {
+  //       const response = await logInHandler(email, password);
+  //       if (response.error) {
+  //         throw response.error;
+  //       } else {
+  //       }
+  //       alert(
+  //         `You have successfully logged in with email "${response.email}" `
+  //       );
+  //       localStorage.setItem("idToken", response.idToken);
+  //       navigate("/", { replace: true });
+  //       emailRef.current.value = "";
+  //       passwordRef.current.value = "";
+  //     } catch (error) {
+  //       alert(error.message);
+  //     }
+  //   }
+  // };
   const emailRef = useRef();
   const passwordRef = useRef();
+  const { error, logIn } = useLogIn();
   const loginHandler = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    if (password.length > 7) {
-      try {
-        const response = await logInHandler(email, password);
-        if (response.error) {
-          throw response.error;
-        } else {
-        }
-        alert(
-          `You have successfully logged in with email "${response.email}" `
-        );
-        localStorage.setItem("idToken", response.idToken);
-        navigate("/", { replace: true });
-        emailRef.current.value = "";
-        passwordRef.current.value = "";
-      } catch (error) {
-        alert(error.message);
-      }
+    await logIn(email, password);
+    if (error) {
+      console.log(error);
+      alert(error);
+    } else {
+      emailRef.current.value = "";
+      passwordRef.current.value = "";
     }
   };
+
   return (
     <div
       style={{

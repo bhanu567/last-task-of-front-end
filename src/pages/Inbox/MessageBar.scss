@@ -1,0 +1,49 @@
+.boundary {
+  margin: 20px 0px;
+  width: 100%;
+  padding: 10px;
+  .email-section {
+    display: flex;
+    flex-direction: row;
+    img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    .div-1 {
+      display: flex;
+      flex-direction: column;
+      width: -moz-available;
+      .div-11 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        p {
+          margin-bottom: 1px;
+        }
+      }
+      .div-12 {
+        color: grey;
+      }
+    }
+  }
+  .msg {
+    margin: 5px 20px;
+  }
+  .btn {
+    width: 100%;
+    button {
+      padding: 2px 50px;
+      background-color: transparent;
+      border-radius: 5px;
+      &:hover {
+        background-color: grey;
+      }
+      img {
+        height: 15px;
+        width: 15px;
+      }
+    }
+  }
+}

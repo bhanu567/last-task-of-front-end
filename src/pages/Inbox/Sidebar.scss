@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   background-color: gainsboro;
-  .up-arrow-parent {
+  .arrow-parent {
     justify-content: left;
+    color: gray;
   }
   button {
     margin: 0px 30px;
@@ -12,7 +13,7 @@
     border: none;
     display: flex;
     justify-content: space-between;
-    .up-arrow {
+    .arrow {
       margin: 0px;
       padding: 0px 10px 0px 0px;
       align-items: center;
@@ -27,8 +28,6 @@
     border-left: 3px solid rgb(11, 95, 249);
     background-color: rgba(11, 94, 249, 0.189);
     font-weight: bolder;
-    display: flex;
-    justify-content: space-between;
   }
   .compose {
     color: white;
@@ -45,6 +44,7 @@
     margin-top: 20px;
     padding: 10px 0px 10px 40px;
     .hide {
+      color: gray;
       margin: 0px;
       padding: 0px;
     }

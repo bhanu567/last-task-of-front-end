@@ -1,41 +1,58 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.scss";
-import { signupHandler } from "../actions/action";
+import useSignUp from "../../store/hooks/signUp";
+// import { signupHandler } from "../../store/functions/login_signup";
 
 const SignUp = () => {
+  // const signUpHandler = async (e) => {
+  //   e.preventDefault();
+  //   const email = emailRef.current.value;
+  //   const password = passwordRef.current.value;
+  //   const confirmPassword = confirmPasswordRef.current.value;
+  //   if (password === confirmPassword) {
+  //     if (password.length > 7) {
+  //       try {
+  //         const response = await signupHandler(email, password);
+  //         if (response.error) {
+  //           throw response.error;
+  //         } else {
+  //         }
+  //         alert(
+  //           `You have successfully registered with email "${response.email}" `
+  //         );
+  //         navigate("/login", { replace: true });
+  //         emailRef.current.value = "";
+  //         passwordRef.current.value = "";
+  //         confirmPasswordRef.current.value = "";
+  //       } catch (error) {
+  //         alert(error.message);
+  //       }
+  //     } else {
+  //       alert("Enter A password of length greater than 7.");
+  //     }
+  //   } else {
+  //     alert("Password and Confirm Password should be same.");
+  //   }
+  // };
+
   const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+  const { error, signUp } = useSignUp();
   const signUpHandler = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     const confirmPassword = confirmPasswordRef.current.value;
-    if (password === confirmPassword) {
-      if (password.length > 7) {
-        try {
-          const response = await signupHandler(email, password);
-          if (response.error) {
-            throw response.error;
-          } else {
-          }
-          alert(
-            `You have successfully registered with email "${response.email}" `
-          );
-          navigate("/login", { replace: true });
-          emailRef.current.value = "";
-          passwordRef.current.value = "";
-          confirmPasswordRef.current.value = "";
-        } catch (error) {
-          alert(error.message);
-        }
-      } else {
-        alert("Enter A password of length greater than 7.");
-      }
+    await signUp(email, password, confirmPassword);
+    if (error) {
+      alert(error);
     } else {
-      alert("Password and Confirm Password should be same.");
+      emailRef.current.value = "";
+      passwordRef.current.value = "";
+      confirmPasswordRef.current.value = "";
     }
   };
   return (

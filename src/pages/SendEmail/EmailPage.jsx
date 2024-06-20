@@ -1,28 +1,32 @@
 import React, { useRef, useState } from "react";
 import "./EmailPage.scss";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from "draft-js";
-import deletebtn from "../image/delete.png";
-import colorPicker from "../image/colorPicker.jpg";
-
+import { EditorState } from "draft-js"; //, convertToRaw
+import deletebtn from "../../image/delete.png";
+import colorPicker from "../../image/colorPicker.jpg";
+import { emailActions } from "../../store/reducer/emailSlice";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { sendEmailRestAPI } from "../functions/sendEmail";
+import { sendEmailRestAPI } from "../../store/functions/sendEmail";
+import { useDispatch } from "react-redux";
 
 const EmailPage = () => {
   const [text, setText] = useState(() => EditorState.createEmpty());
-  const emailRef = useRef();
+  const dispatch = useDispatch();
+  const emailIDRef = useRef();
   const sendEmailHandler = async () => {
-    const email = emailRef.current.value;
-    let message = "";
-    convertToRaw(text.getCurrentContent()).blocks.forEach(
-      (block) => (message += block.text)
-    );
+    const emailID = emailIDRef.current.value;
+    const message = text.getCurrentContent().getPlainText();
+    // convertToRaw(text.getCurrentContent()).blocks.forEach(
+    //   (block) => (message += block.text)
+    // );
     try {
-      await sendEmailRestAPI(email, message);
+      // await sendEmailRestAPI(emailID, message);
+
+      dispatch(emailActions.addEmail({ emailID: emailID, message: message }));
 
       alert("Email have been sent Successfully!!!");
 
-      emailRef.current.value = "";
+      emailIDRef.current.value = "";
       setText(() => EditorState.createEmpty());
     } catch (error) {
       alert("Oops... " + error.message);
@@ -36,7 +40,7 @@ const EmailPage = () => {
   return (
     <div className="outer">
       <div className="to">
-        <span>To</span> <input type="email" ref={emailRef}></input>{" "}
+        <span>To</span> <input type="email" ref={emailIDRef}></input>{" "}
         <span>Cc/Bcc</span>{" "}
       </div>
       <hr />

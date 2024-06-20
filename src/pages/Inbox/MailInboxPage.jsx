@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import searchImg from "../image/search.png";
+import searchImg from "../../image/search.png";
 
-import yahooLogo from "../image/yahoo-logo.png";
+import yahooLogo from "../../image/yahoo-logo.png";
 import "./MailInboxPage.scss";
 import Sidebar from "./Sidebar";
 import Content from "./Content";
@@ -35,10 +35,10 @@ const MailInboxPage = () => {
         </div>
       </nav>
       <div className="content-area">
-        <div style={{ width: "20%"}}>
+        <div style={{ width: "20%" }}>
           <Sidebar />
         </div>
-        <div style={{ width: "80%"}}>
+        <div style={{ width: "80%" }}>
           <Content />
         </div>
       </div>
